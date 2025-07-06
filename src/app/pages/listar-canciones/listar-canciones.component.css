@@ -1,0 +1,165 @@
+/* Estilo general para el body */
+body {
+    background-color: #fff;  /* Fondo blanco para toda la página */
+    color: #333;  /* Texto oscuro para contrastar con el fondo blanco */
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Contenedor principal */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 30px;
+    background-color: #ffffff;  /* Fondo claro para el contenedor */
+    border-radius: 12px;
+}
+
+/* Título */
+h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #333;  /* Color oscuro para el título */
+    text-align: center;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+h2::before {
+    content: '\f001';  /* Icono de música de FontAwesome */
+    font-family: 'FontAwesome';
+    font-size: 2rem;
+    position: absolute;
+    top: 0;
+    left: -40px;
+    color: #007bff;  /* Color azul para icono */
+}
+
+/* Estilo de la lista de canciones */
+.song-list {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+/* Estilo de cada canción */
+.song-item {
+    background-color: #fff;  /* Fondo blanco para cada canción */
+    padding: 20px;
+    border-radius: 10px;
+    border: 4px solid transparent;  /* Borde transparente, cambiará según el género */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);  /* Sombra suave */
+    transition: transform 0.3s, box-shadow 0.3s ease-in-out;
+}
+
+.song-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Encabezado de la canción */
+.song-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.song-header h4 {
+    font-size: 1.6rem;
+    color: #007bff;  /* Color azul neón para los títulos */
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+}
+
+.song-header h4::before {
+    content: '\f001';  /* Icono de música de FontAwesome */
+    font-family: 'FontAwesome';
+    font-size: 1.4rem;
+    position: absolute;
+    top: 0;
+    left: -30px;
+    color: #007bff;  /* Color azul para icono */
+}
+
+/* Fecha de lanzamiento */
+.song-date {
+    font-size: 0.875rem;
+    color: #888;
+}
+
+/* Detalles de la canción */
+.song-details {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+.song-details p {
+    margin: 5px 0;
+}
+
+/* Estilo de los botones */
+.song-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.btn {
+    padding: 8px 20px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 30px;
+    text-decoration: none;
+    text-align: center;
+    transition: background-color 0.3s, transform 0.2s;
+    display: inline-block;
+    width: 100px;
+}
+
+.btn-edit {
+    background-color: #f0ad4e;
+    color: white;
+}
+
+.btn-edit:hover {
+    background-color: #ec971f;
+    transform: scale(1.05);
+}
+
+.btn-delete {
+    background-color: #d9534f;
+    color: white;
+}
+
+.btn-delete:hover {
+    background-color: #c9302c;
+    transform: scale(1.05);
+}
+
+/* Responsivo para dispositivos pequeños */
+@media (max-width: 768px) {
+    .song-item {
+        padding: 15px;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+
+    .song-header h4 {
+        font-size: 1.3rem;
+    }
+
+    .song-details {
+        font-size: 0.9rem;
+    }
+
+    .btn {
+        font-size: 0.9rem;
+        width: 90px;
+    }
+}

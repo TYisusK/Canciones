@@ -1,0 +1,85 @@
+<div class="container">
+    <h2 class="text-center mb-5"><i class="fas fa-edit"></i> Editar Canción</h2>
+
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card-body">
+                <form [formGroup]="editarCancionForm" (ngSubmit)="onSubmit()">
+                    <!-- Título -->
+                    <div class="form-group">
+                        <label for="titulo"><i class="fas fa-music"></i> Título</label>
+                        <input type="text" class="form-control" formControlName="titulo" />
+                        <!-- Mensaje de error de validación -->
+                        @if (enviado && myForm['titulo'].errors?.['required']) {
+                            <div class="error-message">
+                                Este campo es obligatorio
+                            </div>
+                        }
+                    </div>
+
+                    <br />
+
+                    <!-- Autor -->
+                    <div class="form-group">
+                        <label for="autor"><i class="fas fa-user"></i> Autor</label>
+                        <input type="text" class="form-control" formControlName="autor" />
+                        <!-- Mensaje de error de validación -->
+                        @if (enviado && myForm['autor'].errors?.['required']) {
+                            <div class="error-message">
+                                Este campo es obligatorio
+                            </div>
+                        }
+                    </div>
+
+                    <br />
+
+                    <!-- Género -->
+                    <div class="form-group">
+                        <label for="genero"><i class="fas fa-headphones-alt"></i> Género</label>
+                        <select class="form-control" formControlName="genero">
+                            <option value="Rock">Rock</option>
+                            <option value="Pop">Pop</option>
+                            <option value="Jazz">Jazz</option>
+                            <option value="Hip-Hop">Hip-Hop</option>
+                            <option value="Clásica">Clásica</option>
+                            <option value="Reggaetón">Reggaetón</option>
+                            <option value="Regional">Regional</option>
+                            <option value="Otro">Otro</option>
+                        </select>
+                    </div>
+
+                    <br />
+
+                    <!-- Fecha de lanzamiento -->
+                    <div class="form-group">
+                        <label for="fechaLanzamiento"><i class="fas fa-calendar-alt"></i> Fecha de Lanzamiento</label>
+                        <input type="date" class="form-control" formControlName="fechaLanzamiento" [value]="editarCancionForm.get('fechaLanzamiento')?.value || ''" />
+                    </div>
+
+                    <br />
+
+                    <!-- ¿Por qué es tu canción favorita? -->
+                    <div class="form-group">
+                        <label for="favorita"><i class="fas fa-heart"></i> ¿Por qué es tu canción favorita?</label>
+                        <textarea class="form-control" formControlName="favorita" maxlength="50"></textarea>
+                        <!-- Mensaje de error si excede los 50 caracteres -->
+                        @if(enviado && myForm['favorita'].value?.length > 50) {
+                            <div class="error-message">
+                                La descripción no puede exceder los 50 caracteres.
+                            </div>
+                        }
+                    </div>
+
+                    <br />
+
+                    <!-- Botón de Submit -->
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-save"></i> Guardar cambios
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,98 @@
+<div class="container">
+    <h2 class="text-center mb-5">Agregar Canción</h2>
+
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card-body">
+                <form [formGroup]="cancionForm" (ngSubmit)="onSubmit()">
+                    <!-- Título -->
+                    <div class="form-group">
+                        <label for="titulo">
+                            <i class="fas fa-music"></i> Título
+                        </label>
+                        <input type="text" class="form-control" formControlName="titulo" />
+                        <!-- Mensaje de error de validación -->
+                        @if(enviado && myForm['titulo'].errors?.['required']) {
+                            <div class="error-message">Este campo es obligatorio</div>
+                        }
+                    </div>
+
+                    <br />
+
+                    <!-- Autor -->
+                    <div class="form-group">
+                        <label for="autor">
+                            <i class="fas fa-user"></i> Autor
+                        </label>
+                        <input type="text" class="form-control" formControlName="autor" />
+                        <!-- Mensaje de error de validación -->
+                        @if(enviado && myForm['autor'].errors?.['required']) {
+                            <div class="error-message">Este campo es obligatorio</div>
+                        }
+                    </div>
+
+                    <br />
+
+                    <!-- Género -->
+                    <div class="form-group">
+                        <label for="genero">
+                            <i class="fas fa-headphones-alt"></i> Género
+                        </label>
+                        <select class="form-control" (change)="actualizarGenero($event)" formControlName="genero">
+                            <option value="">Selecciona un género...</option>
+                            <option value="Rock">Rock</option>
+                            <option value="Pop">Pop</option>
+                            <option value="Jazz">Jazz</option>
+                            <option value="Hip-Hop">Hip-Hop</option>
+                            <option value="Clásica">Clásica</option>
+                            <option value="Otro">Otro</option>
+                        </select>
+                        <!-- Mensaje de error de validación -->
+                        @if(enviado && myForm['genero'].errors?.['required']) {
+                            <div class="error-message">Debes seleccionar un género</div>
+                        }
+                    </div>
+
+                    <br />
+
+                    <!-- Fecha de lanzamiento -->
+                    <div class="form-group">
+                        <label for="fechaLanzamiento">
+                            <i class="fas fa-calendar-alt"></i> Fecha de lanzamiento
+                        </label>
+                        <input type="date" class="form-control" formControlName="fechaLanzamiento" />
+                        <!-- Mensaje de error de validación -->
+                        @if(enviado && myForm['fechaLanzamiento'].errors?.['required']) {
+                            <div class="error-message">Este campo es obligatorio</div>
+                        }
+                    </div>
+
+                    <br />
+
+                    <!-- ¿Por qué es tu canción favorita? -->
+                    <div class="form-group">
+                        <label for="favorita">
+                            <i class="fas fa-heart"></i> ¿Por qué es tu canción favorita?
+                        </label>
+                        <textarea class="form-control" formControlName="favorita" rows="3" maxlength="50"></textarea>
+                        <!-- Mensaje de error de validación -->
+                        @if(enviado && myForm['favorita'].errors?.['required']) {
+                            <div class="error-message">Este campo es obligatorio</div>
+                        }
+                        <!-- Mensaje de error si excede los 50 caracteres -->
+                        @if(enviado && myForm['favorita'].value?.length > 50) {
+                            <div class="error-message">La descripción no puede exceder los 50 caracteres.</div>
+                        }
+                    </div>
+
+                    <br />
+
+                    <!-- Botón de Submit -->
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">Agregar Canción</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

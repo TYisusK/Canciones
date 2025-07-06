@@ -1,0 +1,28 @@
+<div class="container">
+    <h2 class="text-center mb-5">Canciones Favoritas</h2>
+
+    <!-- Si no hay canciones en la lista -->
+    @if(listaCanciones.length <= 0) {
+        <p class="text-center text-muted">No hay canciones registradas. ¡Agrega la tuya y compártela con el mundo!</p>
+    } @else {
+        <div class="song-list">
+            @for(cancion of listaCanciones; track cancion._id; let i = $index) {
+                <div class="song-item" [ngStyle]="{'border-color': getBorderColor(cancion.genero)}">
+                    <div class="song-header">
+                        <h4>{{cancion.titulo}}</h4>
+                        <span class="song-date">{{cancion.fechaLanzamiento | date: 'dd/MM/yyyy'}}</span>
+                    </div>
+                    <div class="song-details">
+                        <p><strong>Autor:</strong> {{cancion.autor}}</p>
+                        <p><strong>Género:</strong> {{cancion.genero}}</p>
+                        <p><strong>Favorita:</strong> {{cancion.favorita}}</p>
+                    </div>
+                    <div class="song-actions">
+                        <a [routerLink]="['/editar-cancion', cancion._id]" class="btn btn-edit">Editar</a>
+                        <a (click)="eliminarCancion(cancion, i)" class="btn btn-delete">Eliminar</a>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</div>
